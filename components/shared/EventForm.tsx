@@ -1,8 +1,13 @@
 'use client'
 
-const EventForm = () => {
+type EventFormProps = {
+    userId: string
+    type: "Create" | "Update"
+}
+
+const EventForm = ({ userId, type}: EventFormProps) => {
   return (
-    <div>EventForm</div>
+    <div>EventForm {type} </div>
   )
 }
 
