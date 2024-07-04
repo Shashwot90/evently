@@ -11,6 +11,7 @@ import { eventDefaultValues } from "@/constants"
 import Dropdown from "./Dropdown"
 import { Textarea } from "@/components/ui/textarea"
 import FileUploader from "./FileUploader"
+import { useState } from "react"
 
 
 
@@ -18,7 +19,7 @@ type EventFormProps = {
     userId: string
     type: "Create" | "Update"
 }
-
+const [files, setfiles] = useState<File[]>([])
 const initialValues = eventDefaultValues
 
 const EventForm = ({ userId, type}: EventFormProps) => {
