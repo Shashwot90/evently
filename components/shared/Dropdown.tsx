@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import { Input } from '../ui/input'
 import { createCategory, getAllCategories } from '@/lib/actions/category.actions'
-import Category from '@/lib/database/models/category.model'
+import Category, { ICategory } from '@/lib/database/models/category.model'
 
 
 
@@ -45,8 +45,9 @@ const Dropdown = (
   useEffect(() => {
     const getCategories = async () => {
       const categoryList = await getAllCategories()
-      categoryList && setCategories(categoryList)
+      categoryList && setCategories(categoryList as ICategory[])
     }
+    getCategories()
   }, [])
   
   
@@ -63,7 +64,7 @@ const Dropdown = (
           </SelectItem>
         )) }
         <AlertDialog>
-          <AlertDialogTrigger className='p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500'>Open</AlertDialogTrigger>
+          <AlertDialogTrigger className='p-medium-14 flex w-full rounded-sm py-3 pl-8 text-primary-500 hover:bg-primary-50 focus:text-primary-500'>Add New Category</AlertDialogTrigger>
           <AlertDialogContent className='bg-white'>
             <AlertDialogHeader>
               <AlertDialogTitle>New Category</AlertDialogTitle>
