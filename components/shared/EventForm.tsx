@@ -28,15 +28,20 @@ const EventForm = ({ userId, type}: EventFormProps) => {
      
     const initialValues = eventDefaultValues
 
+    const { startUpload } = useUploadThing('imageUploader')
+
     const form = useForm<z.infer<typeof eventFormSchema>>({
         resolver: zodResolver(eventFormSchema),
         defaultValues: initialValues
       })
      
-      // 2. Define a submit handler.
+    
       function onSubmit(values: z.infer<typeof eventFormSchema>) {
-        // Do something with the form values.
-        // ✅ This will be type-safe and validated.
+        const eventData = values
+        let uploadedImageUrl = values.imageUrl
+        if(files.length > 0) {
+            const uiploadImages = await startUpload(files)
+        }
         console.log(values)
       }
 
